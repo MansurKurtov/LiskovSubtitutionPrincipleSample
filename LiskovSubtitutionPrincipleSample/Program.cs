@@ -8,7 +8,7 @@ namespace LiskovSubtitutionPrincipleSample
 {
     /// <summary>
     /// Functions that use pointers or references to base classes must be able 
-    /// to use objects of derived classes without knowing it
+    /// to use objects of derived classes without knowing it.
     /// The Liskov Substitution Principle says that the object of a derived class 
     /// should be able to replace an object of the base class without 
     /// bringing any errors in the system or modifying the behavior of the base class
@@ -18,12 +18,18 @@ namespace LiskovSubtitutionPrincipleSample
         static void Main(string[] args)
         {
             Shape shape = new Reactangle(10, 14);
-            var rectArea = shape.Area();
+            var rectArea = shape.Area();// or var rectArea = CalculateShapeArea(shape);
             var rectPeremetr = shape.Peremetr();
             shape = new Square(12);
-            var squareArea = shape.Area();
+            var squareArea = shape.Area();// or var squareArea = CalculateShapeArea(shape);
             var squarePeremetr = shape.Peremetr();
             //etc.
+            var d = CalculateShapeArea(shape);
+        }
+
+        static double CalculateShapeArea(Shape shape)
+        {
+            return shape.Area();
         }
     }
     abstract class Shape
